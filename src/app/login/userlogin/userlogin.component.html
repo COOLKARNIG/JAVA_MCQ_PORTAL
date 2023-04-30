@@ -1,0 +1,18 @@
+<br>
+<fieldset>
+  <legend>Login</legend>
+
+  <div>
+    <label for="username-input">Username:</label>
+    <input id="username-input" type="text" [(ngModel)]="username" placeholder="Enter username" required>
+  </div>
+  <br>
+
+  <div>
+    <label for="password-input">Password:</label>
+    <input id="password-input" type="password" [(ngModel)]="password" placeholder="Enter password" required>
+  </div>
+  <br>
+
+  <button [disabled]="howToDisable()" (click)="login()">Login</button>
+</fieldset>

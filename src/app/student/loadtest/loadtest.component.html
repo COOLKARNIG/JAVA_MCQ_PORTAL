@@ -1,0 +1,31 @@
+<br>
+Enter Number of Question to Start : <input type="number" [(ngModel)]="questionCount">
+<button [disabled]="isDisable()" (click)="getAllTestQuestion()">Create Test</button>
+
+<div *ngIf="isLoadTest==1">
+  <br>
+  QuestionName : <br>
+  <textarea rows="3" cols="40">{{oneQuestion.questionDetail}}</textarea><br>
+
+  Option A : <textarea cols="30" rows="3" [value]="oneQuestion.optionA"></textarea><br>
+  Option B : <textarea cols="30" rows="3" [value]="oneQuestion.optionB"></textarea><br>
+  Option C : <textarea cols="30" rows="3" [value]="oneQuestion.optionC"></textarea><br>
+  Option D : <textarea cols="30" rows="3" [value]="oneQuestion.optionD"></textarea><br>
+
+  <hr>
+  Your Answer :
+
+  <select [(ngModel)]="userAns">
+    <option disabled selected value></option>
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+    <option>D</option>
+  </select>
+
+  <button [disabled]="userAns.length==0" (click)="showNextQuestion(oneQuestion.id)">Next</button>
+  <div *ngIf="isShowSubmit==1">
+    <button (click)="resultSubmit()">Submit</button>
+  </div>
+
+</div>

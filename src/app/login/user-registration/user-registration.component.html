@@ -1,0 +1,15 @@
+<br>
+<fieldset>
+  <legend>Registration</legend>
+  <p>First Name: <input type="text" [(ngModel)]="user.firstName" placeholder="Enter First Name"></p>
+  <p>Last Name: <input type="text" [(ngModel)]="user.lastName" placeholder="Enter Last Name"></p>
+  <p>EmailId: <input type="text" [(ngModel)]="user.emailId" placeholder="Enter Email-Id"></p>
+  <p>Contact Number: <input type="number" [(ngModel)]="user.contactNumber" placeholder="Enter Mobile Number"></p>
+  <p>DOB: <input type="date" [(ngModel)]="user.dateOfBirth"></p>
+
+  <p>UserName: <input type="text" [(ngModel)]="username" placeholder="Enter User Name"></p>
+  <p>PassWord: <input type="password" [(ngModel)]="password" placeholder="Enter Password"></p>
+
+  <p><button [disabled]="howToDisable()==true" (click)="registerUser()">Register</button></p>
+
+</fieldset>

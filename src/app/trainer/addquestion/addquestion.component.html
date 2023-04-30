@@ -1,0 +1,41 @@
+<br>
+Select Topic Name: <br>
+<select [(ngModel)]="selectedTopic">
+  <option disabled selected value>--Select Topic Name--</option>
+  <option *ngFor="let topic of AllTopicList">{{topic.topicname}}</option>
+  <!-- loop to load all topic available topic -->
+</select>
+<br>
+<hr>
+Proceed with Topic Name : {{selectedTopic}}
+<!-- this 2 way data binding will show selected topic from dropdown -->
+<hr>
+
+<div *ngIf="selectedTopic.length!=0">
+  Question ShortName : <br>
+  <textarea cols="40" rows="02" placeholder="Enter ShortName for Question" [(ngModel)]="question.shortName"></textarea>
+  <br>
+  <!-- will show question only if selected topic length is>0  -->
+  Question Detail : <br>
+  <textarea cols="40" rows="3" placeholder="Enter Question Details"
+    [(ngModel)]="question.questionDetail"></textarea><br>
+
+  Option A : <textarea cols="30" rows="3" placeholder="Enter option A" [(ngModel)]="question.optionA"></textarea><br>
+  Option B : <textarea cols="30" rows="3" placeholder="Enter option B" [(ngModel)]="question.optionB"></textarea><br>
+  Option C : <textarea cols="30" rows="3" placeholder="Enter option C" [(ngModel)]="question.optionC"></textarea><br>
+  Option D : <textarea cols="30" rows="3" placeholder="Enter option D" [(ngModel)]="question.optionD"></textarea><br>
+
+  <hr>
+  Correct Answer :
+  <select [(ngModel)]="question.correctAnswer">
+    <option disabled selected value></option>
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+    <option>D</option>
+  </select>
+  <hr>
+  <button [disabled]="howToDisable()==true" (click)="addQuestion()">Add Question</button>
+  <!-- [disabled]=property binding -->
+  <!-- (click)=""=event binding -->
+</div>

@@ -1,0 +1,11 @@
+<br>
+Welcome Dear, <em><strong>{{this.service.getData().firstName+" "+this.service.getData().lastName}}</strong></em>
+<hr>
+<div *ngIf="isShow==0">
+  <button (click)="whatToShow(1)">Enter to Begin &raquo;</button>
+  <button (click)="logout()">Logout</button>
+</div>
+
+<div *ngIf="isShow==1">
+  <app-loadtest></app-loadtest>
+</div>

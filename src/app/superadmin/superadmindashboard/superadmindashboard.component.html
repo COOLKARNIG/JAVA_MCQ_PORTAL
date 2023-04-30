@@ -1,0 +1,92 @@
+Welcome Dear, <em><strong>{{this.service.getData().firstName+" "+this.service.getData().lastName}}</strong></em>
+<hr>
+<div *ngIf="isShow==0">
+  <button (click)="getUnApproveUsers()">Un-Approved Users</button>
+  <button (click)="getAllApprovedUser()">Active Users</button>
+  <button (click)="getAllDeactiveUsers()">Deactive Users</button>
+  <button (click)="logout()">Logout</button>
+</div>
+
+<!-- To Show List Of UnApproved Users and Set the UserRole -->
+<div *ngIf="isShow==1">
+  <button (click)="backToMenu()">Back</button>
+  <table border="1">
+    <tr>
+      <td>SN</td>
+      <td>Name</td>
+      <td>Set UserRole</td>
+      <td>Action</td>
+    </tr>
+    <tr *ngFor="let user of allUnapprovedUsers ; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{user.firstName+" "+user.lastName}}</td>
+      <td>
+        <select (change)="changeRole($event)">
+          <option disabled selected value="">--SelectRole--</option>
+          <option>Trainer</option>
+          <option>Student</option>
+        </select>
+      </td>
+      <td>
+        <button (click)="approveUsers(user.id)">Approve</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<!-- To Show List of Approved Users and Change the Role -->
+<div *ngIf="isShow==2">
+  <button (click)="backToMenu()">Back</button><br><br>
+  <table border="1">
+    <tr>
+      <td>SN</td>
+      <td>Name</td>
+      <td>Current Role</td>
+      <td>Change UserRole</td>
+      <td>Action</td>
+    </tr>
+    <tr *ngFor="let user of allApprovedUsers ; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{user.firstName+" "+user.lastName}}</td>
+      <td>
+        <label *ngIf="1==user.userRole">
+          Student
+        </label>
+        <label *ngIf="2==user.userRole">
+          Trainer
+        </label>
+      </td>
+      <td>
+        <select (change)="changeRole2($event)">
+          <option disabled selected value="">--SelectRole--</option>
+          <option>Trainer</option>
+          <option>Student</option>
+        </select>
+      </td>
+      <td>
+        <button (click)="changeUserRole(user.id)">Change</button>
+        <button (click)="deactivateUser(user.id)">Deactivate</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- To Show List of Deactive Users -->
+<div *ngIf="isShow==3">
+  <button (click)="backToMenu()">Back</button><br><br>
+  <table border="1">
+    <tr>
+      <td>SN</td>
+      <td>Name</td>
+      <td>Action</td>
+    </tr>
+    <tr *ngFor="let user of allDeactiveUsers ; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{user.firstName+" "+user.lastName}}</td>
+      <td>
+        <button (click)="reactivateUser(user.id)">Re-activate</button>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,35 @@
+<br>
+Enter Topic Name: <br>
+<input type="text" placeholder="Enter TopicName " [(ngModel)]="EnteredTopic"
+  (ngModelChange)="EnteredTopic=$event.toUpperCase()"><br>
+<button [disabled]="disable()==true" (click)="addTopic(EnteredTopic)">AddTopic</button>
+<hr>
+<hr>
+<button (click)="showAllTopic()">ShowAllTopic</button>
+
+
+<div *ngIf="isShowAllTopic==1">
+  <table border="1">
+    <tr>
+      <td>Sr.No</td>
+      <td>TopicName</td>
+      <td>Action</td>
+    </tr>
+
+    <tr *ngFor="let topic of allTopicList; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{topic.topicname}}</td>
+      <td>
+        <button (click)="delete(topic.id)">Delete</button>
+        <button (click)="action(topic.id)">Update</button>
+
+        <div *ngIf="topicId==topic.id && isUpdate==0">
+
+          <input type="text" placeholder="Enter TopicName " [(ngModel)]="updatedTopicName">
+          <button (click)="updateTopicName(topic.id)">Update</button>
+
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

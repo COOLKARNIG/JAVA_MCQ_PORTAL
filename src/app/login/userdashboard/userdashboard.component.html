@@ -1,0 +1,42 @@
+<!-- login dashboard -->
+<h1>JAVA QUIZ-MANIA</h1>
+<hr>
+<hr>
+
+<div class="container">
+  <div *ngIf="whoIsLogin==0">
+    <button (click)="show(1)">LOGIN</button>
+    <button (click)="show(2)">REGISTRATION</button>
+    <button (click)="show(3)">RESET PASSWORD</button>
+    <br>
+
+
+    <div *ngIf="isShow==1">
+      <app-userlogin></app-userlogin>
+    </div>
+
+    <div *ngIf="isShow==2">
+      <app-user-registration></app-user-registration>
+    </div>
+
+    <div *ngIf="isShow==3">
+      <app-resetpassword></app-resetpassword>
+    </div>
+  </div>
+</div>
+
+
+<!-- call to student dashboard -->
+<div *ngIf="whoIsLogin==1">
+  <app-studentdashboard></app-studentdashboard>
+</div>
+
+<!-- call to trainer dashboard -->
+<div *ngIf="whoIsLogin==2">
+  <app-trainerdashboard></app-trainerdashboard>
+</div>
+
+<!-- call to superAdmin dashboard -->
+<div *ngIf="whoIsLogin==3">
+  <app-superadmindashboard></app-superadmindashboard>
+</div>

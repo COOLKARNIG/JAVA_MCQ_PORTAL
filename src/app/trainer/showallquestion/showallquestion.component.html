@@ -1,0 +1,87 @@
+<br>
+Select TopicName : <br>
+<select (change)="selectTopic($event)">
+  <option>--select TopicName--</option>
+  <option *ngFor="let topic of AllTopicList">{{topic.topicname}}</option>
+</select>
+<br>
+<br>
+<!-- show selected question on basis of topicname -->
+<div *ngIf="showDetails==0 && selectedTopic.length!=0">
+  <table border="1">
+    <tr>
+      <td>Sr.No</td>
+      <td>ShortName</td>
+      <td>Action</td>
+    </tr>
+
+    <tr *ngFor="let question of allQuestionOfTopic; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{question.shortName}}</td>
+      <td>
+        <button (click)="delete(question.id)">Delete</button>
+        <button (click)="showQuestionDetails(question.id )">Show Question</button>
+      </td>
+
+    </tr>
+  </table>
+</div>
+
+<!-- show selected question on basis of shortName -->
+<div *ngIf="showDetails==1">
+  <br>
+  <button (click)="backToMenu()">Back &lAarr; </button>
+  <br>
+  <br>
+  Question ShortName : <br>
+  <textarea cols="40" rows="02">{{myQuestionDetail.shortName}}</textarea> <br>
+
+  Question Detail : <br>
+  <textarea cols="40" rows="3"> {{myQuestionDetail.questionDetail}}</textarea><br>
+
+  Option A : <textarea cols="30" rows="3" placeholder="Enter option A"
+    [value]="myQuestionDetail.optionA"></textarea><br>
+  Option B : <textarea cols="30" rows="3" placeholder="Enter option B"
+    [value]="myQuestionDetail.optionB"></textarea><br>
+  Option C : <textarea cols="30" rows="3" placeholder="Enter option C"
+    [value]="myQuestionDetail.optionC"></textarea><br>
+  Option D : <textarea cols="30" rows="3" placeholder="Enter option D"
+    [value]="myQuestionDetail.optionD"></textarea><br>
+
+
+  <hr>
+  <hr>
+  Correct Answer : <input type="text" [value]="myQuestionDetail.correctAnswer"><br>
+  <button (click)="updateClicked()">Update Question</button>
+
+</div>
+
+<!-- it shows question details to update accordingly -->
+<div *ngIf="showDetails==2">
+  <br>
+  <button (click)="backToMenu()">Back &lAarr; </button>
+  <br>
+  <br>
+  Question ShortName : <br>
+  <textarea cols="40" rows="02" [(ngModel)]="myQuestionDetail.shortName"></textarea> <br>
+
+  Question Detail : <br>
+  <textarea cols="40" rows="3" [(ngModel)]="myQuestionDetail.questionDetail"></textarea><br>
+
+  Option A : <textarea cols="30" rows="3" placeholder="Enter option A"
+    [(ngModel)]="myQuestionDetail.optionA"></textarea><br>
+  Option B : <textarea cols="30" rows="3" placeholder="Enter option B"
+    [(ngModel)]="myQuestionDetail.optionB"></textarea><br>
+  Option C : <textarea cols="30" rows="3" placeholder="Enter option C"
+    [(ngModel)]="myQuestionDetail.optionC"></textarea><br>
+  Option D : <textarea cols="30" rows="3" placeholder="Enter option D"
+    [(ngModel)]="myQuestionDetail.optionD"></textarea><br>
+
+
+  <hr>
+  <hr>
+  Correct Answer : <input type="text" [(ngModel)]="myQuestionDetail.correctAnswer"><br>
+  <button (click)="updateQuestion()">Save Changes</button>
+
+
+</div>
